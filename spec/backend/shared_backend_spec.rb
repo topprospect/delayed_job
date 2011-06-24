@@ -1,9 +1,10 @@
 shared_examples_for 'a backend' do
   def create_job(opts = {})
-    @backend.create(opts.merge(:payload_object => SimpleJob.new))
+    @backend.create(opts.merge(:payload_object => SimpleJob.new, :queue => Delayed::Worker.queue))
   end
 
   before do
+    # Delayed::Worker.queue  must be defined
     Delayed::Worker.max_priority = nil
     Delayed::Worker.min_priority = nil
     Delayed::Worker.default_priority = 99
@@ -124,7 +125,7 @@ shared_examples_for 'a backend' do
   context "when another worker is already performing an task, it" do
 
     before :each do
-      @job = @backend.create :payload_object => SimpleJob.new, :locked_by => 'worker1', :locked_at => @backend.db_time_now - 5.minutes
+      @job = @backend.create :payload_object => SimpleJob.new, :locked_by => 'worker1', :locked_at => @backend.db_time_now - 5.minutes, :queue => Delayed::Worker.queue
     end
 
     it "should not allow a second worker to get exclusive access" do
@@ -241,7 +242,7 @@ shared_examples_for 'a backend' do
     end
 
     it "should fetch jobs ordered by priority" do
-      10.times { @backend.enqueue SimpleJob.new, rand(10) }
+      10.times { @backend.enqueue SimpleJob.new, rand(10), Delayed::Worker.queue }
       jobs = @backend.find_available('worker', 10)
       jobs.size.should == 10
       jobs.each_cons(2) do |a, b| 
