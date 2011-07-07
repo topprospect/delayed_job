@@ -1,17 +1,29 @@
 require 'active_record'
 
 class ActiveRecord::Base
-  def self.load_for_delayed_job(id)
-    if id
-      find(id)
-    else
-      super
-    end
-  end
+  yaml_as "tag:ruby.yaml.org,2002:ActiveRecord"
   
-  def dump_for_delayed_job
-    "#{self.class};#{id}"
+  def self.yaml_new(klass, tag, val)
+    klass.find(val['attributes']['id'])
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
+
+  def to_yaml_properties
+    ['@attributes']
+  end
+
+#  def self.load_for_delayed_job(id)
+#     if id
+#       find(id)
+#     else
+#       super
+#     end
+#  end
+#
+#  def dump_for_delayed_job
+#     "#{self.class};#{id}"
+#  end
 end
 
 module Delayed

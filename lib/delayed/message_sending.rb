@@ -48,6 +48,18 @@ module Delayed
         end
         alias_method_chain method, :delay
       end
+
+=begin
+# this was the TP original:
+      def handle_asynchronously(method, options = {})
+        aliased_method, punctuation = method.to_s.sub(/([?!=])$/, ''), $1
+        with_method, without_method = "#{aliased_method}_with_delay#{punctuation}", "#{aliased_method}_without_delay#{punctuation}"
+        define_method(with_method) do |*args|
+          delay(options).__send__(without_method, *args)
+        end
+        alias_method_chain method, :delay
+      end
+=end
     end
   end                               
 end
