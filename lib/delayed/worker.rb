@@ -53,7 +53,9 @@ module Delayed
       @quiet = options[:quiet]
       self.class.min_priority = options[:min_priority] if options.has_key?(:min_priority)
       self.class.max_priority = options[:max_priority] if options.has_key?(:max_priority)
-      self.class.queue        = options[:queue] || Delayed::DEFAULT_QUEUE
+      self.class.queue        = options[:queue]  || Delayed::DEFAULT_QUEUE
+      # renaming the log file works like this only when using RAILS_DEFAULT_LOGGER:
+      rename_default_rails_log_if_given(options[:logname])
     end
 
     # Every worker has a unique name which by default is the pid of the process. There are some
