@@ -1,3 +1,5 @@
+.rvmrc
 *.gem
 *.swp
+Gemfile.lock
 .idea/*
