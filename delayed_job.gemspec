@@ -20,7 +20,7 @@ This gem is collectiveidea's fork (http://github.com/collectiveidea/delayed_job)
   s.add_runtime_dependency      'daemons'
   s.add_development_dependency  'rspec',          '<2.0'
   s.add_development_dependency  'rake'
-  s.add_development_dependency  'rails',          '<3.0'
+#  s.add_development_dependency  'rails',          '<2.4'
   s.add_development_dependency  'sqlite3'
   s.add_development_dependency  'mysql'
   s.add_development_dependency  'mongo_mapper'
