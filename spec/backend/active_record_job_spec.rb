@@ -17,6 +17,14 @@ describe Delayed::Backend::ActiveRecord::Job do
   end
   
   it_should_behave_like 'a backend'
+    [Delayed::DEFAULT_QUEUE, "foo"].each do |queue|
+    context "when given a queue of #{queue}" do
+      before do
+        Delayed::Worker.queue = queue
+      end
+      it_should_behave_like 'a backend'
+    end
+  end
 
   context "db_time_now" do
     it "should return time in current time zone if set" do

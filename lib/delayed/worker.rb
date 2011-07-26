@@ -12,6 +12,7 @@ module Delayed
     self.max_attempts = 25
     self.max_run_time = 4.hours
     self.default_priority = 0
+    self.queue = Delayed::DEFAULT_QUEUE
     
     # By default failed jobs are destroyed after too many attempts. If you want to keep them around
     # (perhaps to inspect the reason for the failure), set this to false.
@@ -28,6 +29,22 @@ module Delayed
     attr_accessor :name_prefix
     
     cattr_reader :backend
+
+    # rename the default Rails logger file, if requested
+    # TODO should we put it inside a Rails own class/module?
+    #
+    # http://stackoverflow.com/questions/3500200/getting-delayed-job-to-log
+    # https://gist.github.com/833828
+
+    def rename_default_rails_log_if_given(filename)
+      return unless filename and not filename.empty?
+
+      f = open filename, (File::WRONLY | File::APPEND | File::CREAT)
+      f.sync = true
+      RAILS_DEFAULT_LOGGER.auto_flushing = true
+      # TODO shouldn't we first close whatever was there?
+      RAILS_DEFAULT_LOGGER.instance_variable_set(:@log, f)
+    end
     
     def self.backend=(backend)
       if backend.is_a? Symbol

@@ -18,7 +18,10 @@ module Delayed
     
           priority = args.first || Delayed::Worker.default_priority
           run_at   = args[1]
-          self.create(:payload_object => object, :priority => priority.to_i, :run_at => run_at)
+          # we just added queue to the positional argument list and to self.create,
+          # TODO will it break for other backends where :queue is not defined yet?
+          queue    = args[2] || Delayed::Worker.queue
+          self.create(:payload_object => object, :priority => priority.to_i, :run_at => run_at, :queue => queue)
         end
         
         # Hook method that is called before a new worker is forked
