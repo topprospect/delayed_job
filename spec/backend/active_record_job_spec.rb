@@ -16,13 +16,52 @@ describe Delayed::Backend::ActiveRecord::Job do
     Time.zone = nil
   end
   
-  it_should_behave_like 'a backend'
-    [Delayed::DEFAULT_QUEUE, "foo"].each do |queue|
+  [Delayed::DEFAULT_QUEUE, Delayed::ALL_QUEUES, "foo"].each do |queue|
     context "when given a queue of #{queue}" do
       before do
         Delayed::Worker.queue = queue
       end
       it_should_behave_like 'a backend'
+    end
+  end
+
+  context "named queues" do
+    def create_job(opts = {})
+      @backend.create({:payload_object => SimpleJob.new, :queue => Delayed::Worker.queue}.merge(opts))
+    end
+
+    context "when worker has one queue set" do
+      before(:each) do
+        @worker = Delayed::Worker.new(:queue => "large")
+      end
+
+      it "should only work off jobs which are from its queue" do
+        SimpleJob.runs.should == 0
+
+        create_job(:queue => "large")
+        create_job(:queue => "small")
+        @worker.work_off
+
+        SimpleJob.runs.should == 1
+      end
+    end
+
+    context "when worker has all queues set" do
+      before(:each) do
+        @worker = Delayed::Worker.new(:queue => Delayed::ALL_QUEUES)
+      end
+
+      it "should work off all jobs for ALL queue designator" do
+        SimpleJob.runs.should == 0
+
+        create_job(:queue => "large")
+        create_job(:queue => "small")
+        create_job(:queue => "medium")
+        create_job(:queue => Delayed::DEFAULT_QUEUE)
+        @worker.work_off
+
+        SimpleJob.runs.should == 4
+      end
     end
   end
 

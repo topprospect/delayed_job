@@ -5,6 +5,7 @@ require 'active_support/core_ext/kernel'
 
 module Delayed
   DEFAULT_QUEUE = ''
+  ALL_QUEUES    = 'ALL'
 
   class Worker
     cattr_accessor :min_priority, :max_priority, :max_attempts, :max_run_time, :default_priority, :sleep_delay, :logger, :queue
@@ -32,6 +33,7 @@ module Delayed
 
     # rename the default Rails logger file, if requested
     # TODO should we put it inside a Rails own class/module?
+    # TODO flush in any case, even if not renaming?
     #
     # http://stackoverflow.com/questions/3500200/getting-delayed-job-to-log
     # https://gist.github.com/833828

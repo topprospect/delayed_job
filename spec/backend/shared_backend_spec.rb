@@ -6,7 +6,7 @@ end
 
 shared_examples_for 'a backend' do
   def create_job(opts = {})
-    @backend.create(opts.merge(:payload_object => SimpleJob.new, :queue => Delayed::Worker.queue))
+    @backend.create({:payload_object => SimpleJob.new, :queue => Delayed::Worker.queue}.merge(opts))
   end
 
   before do
@@ -18,7 +18,7 @@ shared_examples_for 'a backend' do
   end
   
   it "should set run_at automatically if not set" do
-    @backend.create(:payload_object => ErrorJob.new ).run_at.should_not be_nil
+    @backend.create(:payload_object => ErrorJob.new).run_at.should_not be_nil
   end
 
   it "should not set run_at automatically if already set" do

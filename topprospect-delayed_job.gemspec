@@ -2,12 +2,14 @@
 
 Gem::Specification.new do |s|
   s.name              = 'topprospect-delayed_job'
-  s.version           = '2.0.6'
-  s.authors           = ["Chris Gaffney", "Brandon Keepers", "Tobias L\303\274tke"]
-  s.summary           = 'Database-backed asynchronous priority queue system -- Extracted from Shopify.  TopProspect improvements include named queues, bundler, and more'
-  s.description       = "Delayed_job (or DJ) encapsulates the common pattern of asynchronously executing longer tasks in the background. It is a direct extraction from Shopify where the job table is responsible for a multitude of core tasks.
-
-This gem is collectiveidea's fork (http://github.com/collectiveidea/delayed_job)."
+  s.version           = '2.0.7'
+  s.authors           = ["Chris Gaffney", "Brandon Keepers", "Tobias L\303\274tke", "Sujoy Gupta", "Alexy Khrabrov"]
+  s.summary           = 'Database-backed asynchronous priority queue system -- Extracted from Shopify'
+  s.description       =
+"Delayed_job (or DJ) encapsulates the common pattern of asynchronously executing longer tasks in the background.
+It is a direct extraction from Shopify where the job table is responsible for a multitude of core tasks.
+This gem isa topprospect fork (http://github.com/topprospect/delayed_job)
+of the  collectiveidea's fork (http://github.com/collectiveidea/delayed_job)."
   s.email             = ['chris@collectiveidea.com', 'brandon@opensoul.org']
   s.extra_rdoc_files  = 'README.textile'
   s.files             = Dir.glob('{contrib,lib,recipes,spec,rails}/**/*') +

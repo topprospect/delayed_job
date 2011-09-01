@@ -25,6 +25,8 @@ module Delayed
         
         before_save :set_default_run_at
 
+
+        # TODO Rails 3 scope is not queue-aware as the mainstream delayed_job does it
         if ::ActiveRecord::VERSION::MAJOR >= 3
           scope :ready_to_run, lambda {|worker_name, max_run_time|
             where(['(run_at <= ? AND (locked_at IS NULL OR locked_at < ?) OR locked_by = ?) AND failed_at IS NULL', db_time_now, db_time_now - max_run_time, worker_name])
@@ -32,7 +34,16 @@ module Delayed
           scope :by_priority, order('priority ASC, run_at ASC')
         else
           named_scope :ready_to_run, lambda {|worker_name, max_run_time|
-            {:conditions => ['queue = ? AND (run_at <= ? AND (locked_at IS NULL OR locked_at < ?) OR locked_by = ?) AND failed_at IS NULL', Worker.queue, db_time_now, db_time_now - max_run_time, worker_name]}
+
+            if Worker.queue == Delayed::ALL_QUEUES
+              conditions = ['(run_at <= ? AND (locked_at IS NULL OR locked_at < ?) OR locked_by = ?) AND failed_at IS NULL',
+                            db_time_now, db_time_now - max_run_time, worker_name]
+            else
+              conditions = ['queue = ? AND (run_at <= ? AND (locked_at IS NULL OR locked_at < ?) OR locked_by = ?) AND failed_at IS NULL',
+                            Worker.queue, db_time_now, db_time_now - max_run_time, worker_name]
+            end
+
+            {:conditions => conditions}
           }
           named_scope :by_priority, :order => 'priority ASC, run_at ASC'
         end

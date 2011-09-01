@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v2.3.14, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="do_sqlite3 (v0.10.6, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack (v1.1.2, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v0.9.2, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mongo_mapper (v0.8.6, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mongo (v1.3.1, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord (v2.3.14, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rbx-require-relative (v0.0.5, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="plucky (v0.3.8, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="SystemTimer (v1.2.3, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec (v1.3.2, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="linecache (v0.46, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jnunemaker-validatable (v1.8.4, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.2.6, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="columnize (v0.3.4, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dm-validations (v1.1.0, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bson (v1.3.1, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails (v2.3.14, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bson_ext (v1.3.1, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activesupport (v2.3.14, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dm-aggregates (v1.1.0, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="data_objects (v0.10.6, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="database_cleaner (v0.6.7, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-debug-base (v0.10.4, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.0.15, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionpack (v2.3.14, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dm-observer (v1.1.0, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-debug (v0.10.4, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.4, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="abstract (v1.0.0, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activeresource (v2.3.14, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dm-core (v1.1.0, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="daemons (v1.1.4, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mysql (v2.8.1, RVM: ree-1.8.7-2011.03 [topprospect]) [gem]" level="application" />
+  </component>
+</module>
+
