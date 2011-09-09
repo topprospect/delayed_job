@@ -3,3 +3,4 @@
 *.swp
 Gemfile.lock
 .idea/*
+test.sql3

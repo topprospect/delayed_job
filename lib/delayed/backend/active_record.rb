@@ -36,11 +36,10 @@ module Delayed
           named_scope :ready_to_run, lambda {|worker_name, max_run_time|
 
             if Worker.queue == Delayed::ALL_QUEUES
-              conditions = ['(run_at <= ? AND (locked_at IS NULL OR locked_at < ?) OR locked_by = ?) AND failed_at IS NULL',
-                            db_time_now, db_time_now - max_run_time, worker_name]
+              conditions = ['(locked_at IS NULL OR locked_at < ?) AND failed_at IS NULL', db_time_now - max_run_time]
             else
-              conditions = ['queue = ? AND (run_at <= ? AND (locked_at IS NULL OR locked_at < ?) OR locked_by = ?) AND failed_at IS NULL',
-                            Worker.queue, db_time_now, db_time_now - max_run_time, worker_name]
+              conditions = ['queue = ? AND (locked_at IS NULL OR locked_at < ?) AND failed_at IS NULL',
+                            Worker.queue, db_time_now - max_run_time]
             end
 
             {:conditions => conditions}

@@ -91,10 +91,10 @@ describe Delayed::Worker do
           lambda { @worker.work_off }.should change { SimpleJob.runs }.from(0).to(1)
         end
     
-        it "should run own jobs" do
-          job_create(:locked_by => @worker.name, :locked_at => (Delayed::Job.db_time_now - 1.minutes))
-          lambda { @worker.work_off }.should change { SimpleJob.runs }.from(0).to(1)
-        end
+        #it "should run own jobs" do
+        #  job_create(:locked_by => @worker.name, :locked_at => (Delayed::Job.db_time_now - 1.minutes))
+        #  lambda { @worker.work_off }.should change { SimpleJob.runs }.from(0).to(1)
+        #end
       end
   
       describe "failed jobs" do
