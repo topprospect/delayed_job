@@ -1,6 +1,9 @@
+*~
+*.swp
+#*#
 .rvmrc
 *.gem
-*.swp
 Gemfile.lock
 .idea/*
 test.sql3
+.bundle

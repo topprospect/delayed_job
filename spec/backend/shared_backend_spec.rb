@@ -100,9 +100,9 @@ shared_examples_for 'a backend' do
       @backend.find_available('worker', 5, 4.hours).should include(@job)
     end
     
-    it "should find expired jobs" do
+    it "should not find expired jobs" do
       @job = create_job(:locked_by => 'worker', :locked_at => @backend.db_time_now - 2.minutes)
-      @backend.find_available('worker', 5, 1.minute).should include(@job)
+      @backend.find_available('worker', 5, 1.minute).should_not include(@job)
     end
     
     #it "should find own jobs" do
@@ -144,8 +144,8 @@ shared_examples_for 'a backend' do
       @backend.find_available('worker2', 1, 6.minutes).length.should == 0
     end
 
-    it "should be found by another worker if the time has expired" do
-      @backend.find_available('worker2', 1, 4.minutes).length.should == 1
+    it "should not be found by another worker even if the time has expired" do
+      @backend.find_available('worker2', 1, 4.minutes).length.should == 0
     end
 
     it "should be able to get exclusive access again when the worker name is the same" do

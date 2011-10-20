@@ -1,4 +1,5 @@
 require 'couchrest'
+require 'couchrest_extended_document'
 
 #extent couchrest to handle delayed_job serialization.
 class CouchRest::ExtendedDocument
