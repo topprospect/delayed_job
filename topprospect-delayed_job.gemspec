@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = 'topprospect-delayed_job'
-  s.version           = '2.0.8'
+  s.version           = '2.0.9'
   s.authors           = ["Chris Gaffney", "Brandon Keepers", "Tobias L\303\274tke", "Sujoy Gupta", "Alexy Khrabrov"]
   s.summary           = 'Database-backed asynchronous priority queue system -- Extracted from Shopify'
   s.description       =
